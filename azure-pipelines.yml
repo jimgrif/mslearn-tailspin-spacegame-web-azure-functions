@@ -100,7 +100,7 @@ stages:
               appSettings: |
                 [
                   {
-                    "name": "AppSettings:SomeFunctionAppSetting",
+                    "name": "SomeFunctionAppSetting",
                     "value": "wibble",
                     "slotSetting": false
                   }
