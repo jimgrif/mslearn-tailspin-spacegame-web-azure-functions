@@ -91,6 +91,20 @@ stages:
               runtimeStack: 'DOTNET|3.1'
               startUpCommand: 'func azure functionapp publish $(functionAppName) --no-bundler'
 
+          - task: AzureAppServiceSettings@1
+            displayName: 'Update function app settings'
+            inputs:
+              azureSubscription: 'Resource Manager - Tailspin - Space Game'
+              appName: '$(LeaderboardAppName)'
+              resourceGroupName: $(ResourceGroupName)
+              appSettings: |
+                [
+                  {
+                    "name": "AppSettings:SomeFunctionAppSetting",
+                    "value": "wibble",
+                    "slotSetting": false
+                  }
+                ]
           - task: AzureWebApp@1
             displayName: 'Azure App Service Deploy: website'
             inputs:
